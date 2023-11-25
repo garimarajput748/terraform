@@ -4,25 +4,17 @@ To create a free-tier AWS EC2 instance using Terraform, you need to follow these
 
 2. **Terraform Installed:** Install Terraform on your local machine. You can download it from the [official website](https://www.terraform.io/downloads.html).
 
-3. **Terraform Installation Issue** Install Docker on your local machine. you can download it from the [official website](https://www.docker.com/products/docker-desktop/).
+3. **AWS CLI Installed:** Install the AWS Command Line Interface (CLI) on your local machine. You can download it from the [AWS CLI website](https://aws.amazon.com/cli/).
 
-4. **Docker Account** If you want to push your data/images on DockerHub then create a account at [Docker Hub](https://hub.docker.com/signup) 
+Here are the steps to create an EC2 instance using Terraform:
 
-Here are the steps to create an EC2 instance using Terraform on Docker:
+### Step 1: Configure AWS CLI
 
-### Step 1: Install OS in Docker 
-
-To install the operating system in Docker, either use Docker commands or create a docker.yml file. In the file, write a script specifying the image you want to install. For example:
+Make sure you configure your AWS CLI with the necessary credentials. You can run the following command and provide your AWS access key ID, secret access key, default region, and output format:
 
 ```bash
-version: '3'
-services:
-  terraform:
-    image: ubuntu
-    command: /bin/sh -c "tail -f /dev/null"
+aws configure
 ```
-
-To connect with Docker, use the command: docker exec <container_id> <command>.
 
 ### Step 2: Create a Terraform Configuration File
 
@@ -84,5 +76,25 @@ terraform destroy
 ```
 
 Type "yes" when prompted to confirm.
+
+# If in your system not having terraform and not able to install then you can run this using docker also like :
+
+**Terraform Installation Issue** First download the Docker  on your local machine. you can download it from the [official website](https://www.docker.com/products/docker-desktop/).
+
+Then go inside the dir.
+
+Run docker compose up -d
+
+To connect with Docker, use the command: docker exec <container_id> /bin/bash/.
+
+cd terraform
+
+then now you can able to run all the terraform cmd inside the container.
+
+if AWS source is not there then you can set Environment variables in `provider` block like-
+export AWS_ACCESS_KEY_ID="anaccesskey"
+export AWS_SECRET_ACCESS_KEY="asecretkey"
+
+then run command terraform plan and terraform apply.
 
 Remember to manage your resources responsibly, and be aware of any potential charges associated with AWS resources outside of the free tier limits.
