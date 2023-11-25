@@ -1,0 +1,8 @@
+version: '3'
+services:
+  terrform:
+    image: garimarajput748/terraform:1.0.0
+    volumes:
+      - .:/terraform
+    working_dir: /
+    command: /bin/sh -c "tail -f /dev/null"
