@@ -91,7 +91,7 @@ cd terraform
 
 then now you can able to run all the terraform cmd inside the container.
 
-if AWS source is not there then you can set Environment variables in `provider` block like-
+if AWS source is not there then you can set Environment variables in command line after `terraform init` like-
 export AWS_ACCESS_KEY_ID="anaccesskey"
 export AWS_SECRET_ACCESS_KEY="asecretkey"
 
